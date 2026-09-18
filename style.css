@@ -1,539 +1,1400 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+/* =========================================================
+   SHAKIBA MEHDIZADEH TORSHIZINEJAD
+   MAIN STYLESHEET
+   ========================================================= */
+
+:root {
+    --black: #0b0b0a;
+    --cream: #e7dfcf;
+    --paper: #d2c6b2;
+    --red: #8c281e;
+    --stone: #9b9385;
+    --grey: #55534e;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--black);
+    font-family: "Cormorant Garamond", Georgia, serif;
+    overflow-x: hidden;
 
-  <title>Shakiba Mehdizadeh Torshizinejad</title>
+    /* Page fade-in */
+    opacity: 0;
+    transition: opacity 0.7s ease;
+}
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Vazirmatn:wght@300;400&display=swap" rel="stylesheet">
+body.loaded {
+    opacity: 1;
+}
 
-  <link rel="stylesheet" href="style.css">
-</head>
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 100;
+    opacity: 0.08;
 
-<body>
+    background-image:
+        repeating-radial-gradient(
+            circle at 20% 30%,
+            #000 0,
+            transparent 1px,
+            transparent 4px
+        );
 
-<header class="topbar">
+    mix-blend-mode: multiply;
+}
 
-  <div class="languages">
-    <button data-lang="en" class="active">EN</button>
-    <button data-lang="de">DE</button>
-    <button data-lang="fa">فارسی</button>
-  </div>
 
-  <nav>
-    <a href="#home">HOME</a>
-    <a href="#about">ABOUT</a>
-    <a href="#teaching">TEACHING</a>
-    <a href="#photography">PHOTOGRAPHY</a>
-    <a href="#poems">POEMS</a>
-    <a href="#podcast">PODCAST</a>
-    <a href="#archive">ARCHIVE</a>
-    <a href="#contact">CONTACT</a>
-  </nav>
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
 
-</header>
+.topbar {
+    position: absolute;
+    top: 0;
+    left: 0;
 
+    width: 100%;
 
-<main>
+    padding: 25px 3vw;
 
-<!-- =========================
-     HOME
-========================= -->
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-<section id="home" class="hero">
+    z-index: 50;
 
-  <div class="sun"></div>
-  <div class="planet planet-one"></div>
-  <div class="planet planet-two"></div>
+    color: var(--cream);
+}
 
-  <div class="side-words">
-    <span>PHILOSOPHY</span>
-    <span>HISTORY</span>
-    <span>MYTHOLOGY</span>
-    <span>LANGUAGES</span>
-    <span>ART & CULTURE</span>
-  </div>
+.languages {
+    display: flex;
+    gap: 18px;
+}
 
+.languages button {
+    background: none;
+    border: 0;
 
-  <div class="collage collage-left">
+    color: inherit;
 
-    <div class="portrait portrait-nietzsche">
-      <span>NIETZSCHE</span>
-    </div>
+    font-family: inherit;
+    font-size: 14px;
 
-    <div class="ancient ancient-persia">
-      <span>PERSIA</span>
-    </div>
+    cursor: pointer;
 
-  </div>
+    opacity: 0.55;
 
+    transition: opacity 0.2s ease;
+}
 
-  <div class="portal">
+.languages button.active,
+.languages button:hover {
+    opacity: 1;
+}
 
-    <div class="portal-sky"></div>
+nav {
+    display: flex;
+    gap: 25px;
+}
 
-    <div class="hero-title">
-      <h1>SHAKIBA</h1>
+nav a {
+    color: inherit;
 
-      <p class="surname">
-        MEHDIZADEH TORSHIZINEJAD
-      </p>
+    text-decoration: none;
 
-      <div class="vertical-line"></div>
+    font-size: 12px;
+    letter-spacing: 0.08em;
 
-      <div class="manifesto">
-        <span>TEACH</span>
-        <span>CREATE</span>
-        <span>EXPLORE</span>
-      </div>
-    </div>
+    transition: opacity 0.2s;
+}
 
-    <div class="mountains"></div>
+nav a:hover {
+    opacity: 0.5;
+}
 
-  </div>
 
+/* =========================================================
+   HERO / HOMEPAGE
+   ========================================================= */
 
-  <div class="collage collage-right">
+.hero {
+    min-height: 100vh;
 
-    <div class="portrait portrait-ancient">
-      <span>ANCIENT WORLDS</span>
-    </div>
+    position: relative;
 
-    <div class="manuscript">
-      <span>اندیشه</span>
-    </div>
+    background:
+        radial-gradient(
+            circle at 50% 25%,
+            #252522 0,
+            #0b0b0a 45%
+        );
 
-  </div>
+    color: var(--cream);
 
+    overflow: hidden;
 
-  <div class="stairs">
-    <div></div>
-    <div></div>
-    <div></div>
-    <div></div>
-  </div>
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-</section>
+    padding-top: 80px;
+}
 
 
-<!-- =========================
-     FOUR PORTALS
-========================= -->
+/* giant red collage circle */
 
-<section class="portals">
+.sun {
+    position: absolute;
 
-  <a class="portal-card" href="#teaching">
+    width: 420px;
+    height: 420px;
 
-    <div class="card-image teaching-image">
-      <div class="mini-statue"></div>
-    </div>
+    border-radius: 50%;
 
-    <h2 data-en="TEACHING"
-        data-de="UNTERRICHT"
-        data-fa="آموزش">
-      TEACHING
-    </h2>
+    background: var(--red);
 
-    <p data-en="Languages · Philosophy · History · Mythology"
-       data-de="Sprachen · Philosophie · Geschichte · Mythologie"
-       data-fa="زبان · فلسفه · تاریخ · اسطوره‌شناسی">
-      Languages · Philosophy · History · Mythology
-    </p>
+    left: 8%;
+    top: 5%;
 
-  </a>
+    opacity: 0.9;
 
+    transition: transform 0.8s ease-out;
+}
 
-  <a class="portal-card" href="#photography">
+.sun::after {
+    content: "";
 
-    <div class="card-image photography-image"></div>
+    position: absolute;
+    inset: 0;
 
-    <h2 data-en="PHOTOGRAPHY"
-        data-de="FOTOGRAFIE"
-        data-fa="عکاسی">
-      PHOTOGRAPHY
-    </h2>
+    border-radius: inherit;
 
-    <p data-en="Architecture · Fashion · People · Places"
-       data-de="Architektur · Mode · Menschen · Orte"
-       data-fa="معماری · مد · انسان · مکان">
-      Architecture · Fashion · People · Places
-    </p>
+    background:
+        repeating-linear-gradient(
+            45deg,
+            transparent 0,
+            transparent 5px,
+            rgba(0, 0, 0, 0.1) 6px
+        );
+}
 
-  </a>
 
+/* celestial objects */
 
-  <a class="portal-card" href="#poems">
+.planet {
+    position: absolute;
 
-    <div class="card-image poetry-image">
-      <span>شعر</span>
-    </div>
+    border-radius: 50%;
 
-    <h2 data-en="POEMS"
-        data-de="GEDICHTE"
-        data-fa="شعرها">
-      POEMS
-    </h2>
+    background:
+        radial-gradient(
+            circle at 35% 35%,
+            #cfc6b5,
+            #504d47 35%,
+            #080808 72%
+        );
 
-    <p data-en="Persian writings · Thoughts · Fragments"
-       data-de="Persische Texte · Gedanken · Fragmente"
-       data-fa="نوشته‌های فارسی · اندیشه‌ها · پاره‌ها">
-      Persian writings · Thoughts · Fragments
-    </p>
+    transition: transform 0.7s ease-out;
+}
 
-  </a>
+.planet-one {
+    width: 110px;
+    height: 110px;
 
+    right: 13%;
+    top: 12%;
+}
 
-  <a class="portal-card" href="#podcast">
+.planet-two {
+    width: 30px;
+    height: 30px;
 
-    <div class="card-image podcast-image">
-      <div class="orbit"></div>
-    </div>
+    left: 26%;
+    top: 23%;
+}
 
-    <h2 data-en="PODCAST"
-        data-de="PODCAST"
-        data-fa="پادکست">
-      PODCAST
-    </h2>
 
-    <p data-en="Ideas · Conversations · Myths · Places"
-       data-de="Ideen · Gespräche · Mythen · Orte"
-       data-fa="اندیشه · گفت‌وگو · اسطوره · مکان">
-      Ideas · Conversations · Myths · Places
-    </p>
+/* words on left */
 
-  </a>
+.side-words {
+    position: absolute;
 
-</section>
+    left: 3vw;
+    top: 18%;
 
+    z-index: 4;
 
-<!-- =========================
-     ABOUT
-========================= -->
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
 
-<section id="about" class="content-section">
+    font-size: 11px;
+    letter-spacing: 0.22em;
+}
 
-  <span class="section-number">01</span>
 
-  <h2 data-en="ABOUT"
-      data-de="ÜBER MICH"
-      data-fa="درباره من">
-    ABOUT
-  </h2>
+/* =========================================================
+   CENTRAL ARCH / PORTAL
+   ========================================================= */
 
-  <div class="text-column">
+.portal {
+    width: min(44vw, 650px);
+    height: 75vh;
 
-    <p
-      data-en="Born in Tehran and based in Berlin, I work between philosophy, cinema, photography, history and education."
-      data-de="In Teheran geboren und heute in Berlin lebend, bewege ich mich zwischen Philosophie, Kino, Fotografie, Geschichte und Bildung."
-      data-fa="در تهران زاده شده‌ام و اکنون در برلین زندگی می‌کنم. حوزه‌های کار و علاقه‌ام میان فلسفه، سینما، عکاسی، تاریخ و آموزش در حرکت‌اند.">
+    position: relative;
 
-      Born in Tehran and based in Berlin, I work between
-      philosophy, cinema, photography, history and education.
+    border-radius: 330px 330px 0 0;
 
-    </p>
+    overflow: hidden;
 
-    <p
-      data-en="I studied Cinema and Film Directing at the University of Art Tehran and later Philosophy and Politics, Economy and Society at Ruhr University Bochum."
-      data-de="Ich studierte Kino und Filmregie an der University of Art Tehran und später Philosophie sowie Politik, Wirtschaft und Gesellschaft an der Ruhr-Universität Bochum."
-      data-fa="در دانشگاه هنر تهران سینما و کارگردانی فیلم خواندم و سپس در دانشگاه رور بوخوم به تحصیل فلسفه و سیاست، اقتصاد و جامعه پرداختم.">
+    background: var(--paper);
+    color: var(--black);
 
-      I studied Cinema and Film Directing at the University
-      of Art Tehran and later Philosophy and Politics,
-      Economy and Society at Ruhr University Bochum.
+    z-index: 5;
 
-    </p>
+    box-shadow:
+        0 0 0 22px rgba(213, 204, 187, 0.16);
+}
 
-  </div>
+.portal-sky {
+    position: absolute;
+    inset: 0;
 
-</section>
+    background:
+        linear-gradient(
+            to bottom,
+            #9ca5a3 0%,
+            #c9c5b8 55%,
+            #9e9586 100%
+        );
+}
 
+.portal-sky::before {
+    content: "";
 
-<!-- =========================
-     TEACHING
-========================= -->
+    position: absolute;
 
-<section id="teaching" class="content-section dark-section">
+    width: 32px;
+    height: 32px;
 
-  <span class="section-number">02</span>
+    border-radius: 50%;
 
-  <h2 data-en="TEACHING"
-      data-de="UNTERRICHT"
-      data-fa="آموزش">
-    TEACHING
-  </h2>
+    background: #e5decb;
 
-  <p class="section-intro"
-     data-en="A meeting place for languages, philosophy, mythology and the ancient world."
-     data-de="Ein Treffpunkt für Sprachen, Philosophie, Mythologie und die antike Welt."
-     data-fa="جایی برای تلاقی زبان‌ها، فلسفه، اسطوره‌شناسی و جهان باستان.">
+    top: 16%;
+    left: 50%;
 
-    A meeting place for languages, philosophy,
-    mythology and the ancient world.
+    transform: translateX(-50%);
+}
 
-  </p>
 
+/* central name */
 
-  <div class="teaching-grid">
+.hero-title {
+    position: absolute;
 
-    <article>
-      <span>01</span>
-      <h3>LANGUAGES</h3>
-      <p>German · English · Persian</p>
-      <p>Children & Adults · A1–C1</p>
-    </article>
+    z-index: 4;
 
+    width: 100%;
 
-    <article>
-      <span>02</span>
-      <h3>PHILOSOPHY</h3>
+    top: 37%;
 
-      <p>
-        Nietzsche · Spinoza · Marx · Epicurus ·
-        Heraclitus · Aristotle
-      </p>
-    </article>
+    text-align: center;
+}
 
+.hero-title h1 {
+    font-size: clamp(55px, 7vw, 105px);
 
-    <article>
-      <span>03</span>
-      <h3>MYTHOLOGY</h3>
+    font-weight: 400;
 
-      <p>
-        Inanna · Mesopotamia · Ahura Mazda ·
-        Persian · Greek · Egyptian mythology
-      </p>
-    </article>
+    letter-spacing: 0.04em;
 
+    margin: 0;
 
-    <article>
-      <span>04</span>
-      <h3>ANCIENT HISTORY</h3>
+    line-height: 0.9;
+}
 
-      <p>
-        Ashurbanipal · Cyrus the Great · Darius ·
-        Persia · Mesopotamia · Eurasia
-      </p>
-    </article>
+.surname {
+    letter-spacing: 0.28em;
 
+    font-size: 12px;
 
-    <article>
-      <span>05</span>
-      <h3>PERSIAN CULTURE</h3>
+    margin-top: 18px;
+}
 
-      <p>
-        Ferdowsi · Omar Khayyam · Poetry ·
-        Literature · History
-      </p>
-    </article>
+.vertical-line {
+    width: 1px;
+    height: 38px;
 
+    background: var(--black);
 
-    <article>
-      <span>06</span>
-      <h3>CINEMA & IMAGE</h3>
+    margin: 25px auto;
+}
 
-      <p>
-        Film · Visual Culture · Photography ·
-        Aesthetics
-      </p>
-    </article>
+.manifesto {
+    display: flex;
+    justify-content: center;
 
-  </div>
+    gap: 42px;
 
+    font-size: 12px;
 
-  <a class="request-button"
-     href="mailto:YOUR-EMAIL-HERE?subject=Class Request">
+    letter-spacing: 0.2em;
+}
 
-    REQUEST A CLASS
 
-  </a>
+/* abstract mountain landscape */
 
-</section>
+.mountains {
+    position: absolute;
 
+    bottom: 0;
 
-<!-- =========================
-     PHOTOGRAPHY
-========================= -->
+    width: 100%;
+    height: 28%;
 
-<section id="photography" class="content-section">
+    background:
 
-  <span class="section-number">03</span>
+        linear-gradient(
+            155deg,
+            transparent 0 23%,
+            #6f6a61 24% 32%,
+            transparent 33%
+        ),
 
-  <h2>PHOTOGRAPHY</h2>
+        linear-gradient(
+            25deg,
+            transparent 0 35%,
+            #827c70 36% 48%,
+            transparent 49%
+        ),
 
-  <p class="section-intro">
-    Architecture · Fashion · People · Places · Details
-  </p>
+        linear-gradient(
+            145deg,
+            transparent 0 50%,
+            #625e56 51% 65%,
+            transparent 66%
+        );
+}
 
 
-  <div class="photo-grid">
+/* =========================================================
+   COLLAGE SIDES
+   ========================================================= */
 
-    <div class="photo-placeholder">
-      YOUR PHOTO
-    </div>
+.collage {
+    position: absolute;
 
-    <div class="photo-placeholder">
-      YOUR PHOTO
-    </div>
+    z-index: 7;
+}
 
-    <div class="photo-placeholder">
-      YOUR PHOTO
-    </div>
+.collage-left {
+    left: 9%;
+    bottom: 10%;
+}
 
-    <div class="photo-placeholder">
-      YOUR PHOTO
-    </div>
+.collage-right {
+    right: 8%;
+    bottom: 12%;
+}
 
-  </div>
+.portrait,
+.ancient,
+.manuscript {
+    position: relative;
 
-</section>
+    background: var(--stone);
 
+    border:
+        1px solid rgba(231, 223, 207, 0.2);
+}
 
-<!-- =========================
-     POEMS
-========================= -->
 
-<section id="poems"
-         class="content-section poetry-section"
-         dir="rtl">
+/* temporary portrait structure */
 
-  <span class="section-number">04</span>
+.portrait {
+    width: 220px;
+    height: 300px;
+}
 
-  <h2>شعر</h2>
+.portrait::before {
+    content: "";
 
-  <div class="poem">
+    position: absolute;
 
-    <p>
-      این‌جا شعرهای فارسی من زندگی خواهند کرد.
-    </p>
+    width: 130px;
+    height: 175px;
 
-    <p class="poem-note">
-      مجموعه‌ای از شعرها، یادداشت‌ها و پاره‌های نوشتاری.
-    </p>
+    border-radius: 48% 48% 42% 42%;
 
-  </div>
+    background:
+        radial-gradient(
+            ellipse at 50% 30%,
+            #c3b7a4,
+            #756c60 55%,
+            #272522
+        );
 
+    left: 45px;
+    top: 35px;
+}
 
-  <button class="read-more">
-    خواندن شعرها
-  </button>
+.portrait::after {
+    content: "";
 
-</section>
+    position: absolute;
 
+    width: 180px;
+    height: 110px;
 
-<!-- =========================
-     PODCAST
-========================= -->
+    background: #393632;
 
-<section id="podcast"
-         class="content-section podcast-section">
+    bottom: 0;
+    left: 20px;
 
-  <span class="section-number">05</span>
+    clip-path:
+        polygon(
+            20% 0,
+            80% 0,
+            100% 100%,
+            0 100%
+        );
+}
 
-  <h2>PODCAST</h2>
+.portrait span,
+.ancient span {
+    position: absolute;
 
-  <div class="podcast-symbol">
-    <div></div>
-  </div>
+    bottom: 12px;
+    left: 12px;
 
-  <p class="coming-soon">
-    COMING SOON
-  </p>
+    z-index: 3;
 
-  <p class="section-intro">
-    Philosophy · History · Myth · Cinema ·
-    Culture · Conversations
-  </p>
+    font-size: 10px;
 
-</section>
+    letter-spacing: 0.18em;
 
+    color: var(--cream);
+}
 
-<!-- =========================
-     ARCHIVE
-========================= -->
 
-<section id="archive"
-         class="content-section dark-section">
+/* ancient architecture block */
 
-  <span class="section-number">06</span>
+.ancient {
+    width: 190px;
+    height: 220px;
 
-  <h2>ARCHIVE</h2>
+    margin-left: -65px;
+    margin-top: -55px;
 
-  <div class="archive-links">
+    background:
+        repeating-linear-gradient(
+            90deg,
+            #5b574f 0 10px,
+            #81796c 11px 18px
+        );
+}
 
-    <a href="#" target="_blank">
-      <span>01</span>
-      SPOTIFY
-    </a>
 
-    <a href="#" target="_blank">
-      <span>02</span>
-      SOUNDCLOUD
-    </a>
+/* Persian manuscript */
 
-    <a href="#" target="_blank">
-      <span>03</span>
-      LETTERBOXD
-    </a>
+.manuscript {
+    width: 190px;
+    height: 250px;
 
-    <a href="https://instagram.com/schabika"
-       target="_blank">
-      <span>04</span>
-      INSTAGRAM
-    </a>
+    background: #c9b99d;
 
-  </div>
+    transform: rotate(3deg);
 
-</section>
+    display: grid;
+    place-items: center;
+}
 
+.manuscript span {
+    font-family: "Vazirmatn", sans-serif;
 
-<!-- =========================
-     CONTACT
-========================= -->
+    color: #24211d;
 
-<section id="contact"
-         class="content-section contact-section">
+    font-size: 30px;
+}
 
-  <span class="section-number">07</span>
 
-  <h2>CONTACT</h2>
+/* =========================================================
+   STAIRS
+   ========================================================= */
 
-  <p>
-    Berlin · Tehran · Elsewhere
-  </p>
+.stairs {
+    position: absolute;
 
-  <a class="email"
-     href="mailto:YOUR-EMAIL-HERE">
+    z-index: 9;
 
-    YOUR-EMAIL-HERE
+    bottom: 0;
+    left: 50%;
 
-  </a>
+    transform: translateX(-50%);
 
-</section>
+    width: 56%;
+}
 
-</main>
+.stairs div {
+    height: 20px;
 
+    margin: auto;
 
-<footer>
+    background: #8c867c;
 
-  <span>
-    SHAKIBA MEHDIZADEH TORSHIZINEJAD
-  </span>
+    border-top: 1px solid #b8ae9e;
+}
 
-  <span>
-    DIFFERENT WORLDS · A SHARED CURIOSITY
-  </span>
+.stairs div:nth-child(1) {
+    width: 60%;
+}
 
-  <span>
-    © 2026
-  </span>
+.stairs div:nth-child(2) {
+    width: 75%;
+}
 
-</footer>
+.stairs div:nth-child(3) {
+    width: 88%;
+}
 
+.stairs div:nth-child(4) {
+    width: 100%;
+}
 
-<script src="script.js"></script>
 
-</body>
-</html>
+/* =========================================================
+   FOUR MAIN PORTALS
+   ========================================================= */
+
+.portals {
+    background: var(--cream);
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 0;
+
+    padding:
+        100px 7vw 130px;
+}
+
+.portal-card {
+    color: var(--black);
+
+    text-decoration: none;
+
+    text-align: center;
+
+    padding:
+        0 18px 30px;
+
+    border-right:
+        1px solid rgba(0, 0, 0, 0.18);
+
+    transition:
+        transform 0.35s ease;
+}
+
+.portal-card:last-child {
+    border-right: none;
+}
+
+.portal-card:hover {
+    transform:
+        translateY(-12px);
+}
+
+
+/* card images */
+
+.card-image {
+    width: 100%;
+
+    aspect-ratio: 0.85;
+
+    border-radius:
+        50% 50% 0 0;
+
+    margin-bottom: 25px;
+
+    overflow: hidden;
+
+    position: relative;
+
+    background: var(--black);
+}
+
+
+/* Teaching */
+
+.teaching-image {
+    background:
+
+        radial-gradient(
+            circle at 50% 35%,
+            #b6aa96 0 15%,
+            transparent 16%
+        ),
+
+        linear-gradient(
+            #171716,
+            #35332e
+        );
+}
+
+.mini-statue {
+    position: absolute;
+
+    width: 45%;
+    height: 65%;
+
+    left: 27%;
+    bottom: 0;
+
+    background: #8f887c;
+
+    clip-path:
+        polygon(
+            35% 0,
+            65% 0,
+            75% 20%,
+            70% 45%,
+            90% 100%,
+            10% 100%,
+            30% 45%,
+            25% 20%
+        );
+}
+
+
+/* Photography */
+
+.photography-image {
+    background:
+
+        radial-gradient(
+            circle at 70% 25%,
+            #e3d9c5 0 4%,
+            transparent 5%
+        ),
+
+        linear-gradient(
+            145deg,
+            transparent 0 40%,
+            #756e63 41% 55%,
+            transparent 56%
+        ),
+
+        #868d89;
+}
+
+
+/* Poetry */
+
+.poetry-image {
+    background:
+
+        radial-gradient(
+            circle at 70% 20%,
+            #8e241d 0 20%,
+            transparent 21%
+        ),
+
+        #bcae96;
+
+    display: grid;
+
+    place-items: center;
+}
+
+.poetry-image span {
+    font-family:
+        "Vazirmatn",
+        sans-serif;
+
+    font-size: 52px;
+}
+
+
+/* Podcast */
+
+.podcast-image {
+    background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            #b8ad99 0 3%,
+            transparent 4%
+        ),
+
+        #111;
+}
+
+.orbit {
+    position: absolute;
+
+    width: 65%;
+
+    aspect-ratio: 1;
+
+    border:
+        1px solid var(--cream);
+
+    border-radius: 50%;
+
+    left: 17.5%;
+    top: 20%;
+}
+
+.orbit::after {
+    content: "";
+
+    position: absolute;
+
+    width: 18%;
+
+    aspect-ratio: 1;
+
+    border-radius: 50%;
+
+    background: var(--red);
+
+    right: 5%;
+    top: 15%;
+}
+
+
+/* Portal typography */
+
+.portal-card h2 {
+    font-weight: 400;
+
+    letter-spacing: 0.12em;
+
+    font-size: 21px;
+}
+
+.portal-card p {
+    font-size: 15px;
+
+    font-style: italic;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   GENERAL CONTENT SECTIONS
+   ========================================================= */
+
+.content-section {
+    min-height: 75vh;
+
+    padding:
+        110px 10vw;
+
+    position: relative;
+}
+
+.section-number {
+    display: block;
+
+    font-size: 11px;
+
+    letter-spacing: 0.25em;
+
+    margin-bottom: 35px;
+
+    opacity: 0.5;
+}
+
+.content-section > h2 {
+    font-size:
+        clamp(55px, 8vw, 120px);
+
+    font-weight: 400;
+
+    letter-spacing: 0.04em;
+
+    margin:
+        0 0 65px;
+}
+
+.text-column {
+    width:
+        min(700px, 100%);
+
+    margin-left: auto;
+}
+
+.text-column p,
+.section-intro {
+    font-size:
+        clamp(20px, 2vw, 29px);
+
+    line-height: 1.5;
+}
+
+.dark-section {
+    background: var(--black);
+
+    color: var(--cream);
+}
+
+
+/* =========================================================
+   TEACHING
+   ========================================================= */
+
+.teaching-grid {
+    margin-top: 80px;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    border-top:
+        1px solid #57534b;
+}
+
+.teaching-grid article {
+    padding: 35px;
+
+    min-height: 260px;
+
+    border-right:
+        1px solid #57534b;
+
+    border-bottom:
+        1px solid #57534b;
+}
+
+.teaching-grid article:nth-child(3n) {
+    border-right: none;
+}
+
+.teaching-grid article > span {
+    font-size: 10px;
+
+    opacity: 0.5;
+}
+
+.teaching-grid h3 {
+    margin-top: 50px;
+
+    font-size: 23px;
+
+    letter-spacing: 0.12em;
+
+    font-weight: 400;
+}
+
+.teaching-grid p {
+    line-height: 1.6;
+
+    opacity: 0.75;
+}
+
+.request-button {
+    display: inline-block;
+
+    margin-top: 70px;
+
+    padding:
+        17px 28px;
+
+    color: var(--cream);
+
+    text-decoration: none;
+
+    border:
+        1px solid var(--cream);
+
+    letter-spacing: 0.18em;
+
+    font-size: 12px;
+
+    transition: 0.25s;
+}
+
+.request-button:hover {
+    background: var(--cream);
+
+    color: var(--black);
+}
+
+
+/* =========================================================
+   PHOTOGRAPHY
+   ========================================================= */
+
+.photo-grid {
+    display: grid;
+
+    grid-template-columns:
+        1.4fr 1fr;
+
+    gap: 15px;
+
+    margin-top: 70px;
+}
+
+.photo-placeholder {
+    min-height: 400px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #343330,
+            #9c9589
+        );
+
+    display: grid;
+
+    place-items: center;
+
+    font-size: 11px;
+
+    letter-spacing: 0.2em;
+
+    color: var(--cream);
+}
+
+.photo-placeholder:nth-child(2),
+.photo-placeholder:nth-child(3) {
+    min-height: 300px;
+}
+
+
+/* =========================================================
+   PERSIAN POETRY
+   ========================================================= */
+
+.poetry-section {
+    background: #b9a98e;
+
+    font-family:
+        "Vazirmatn",
+        sans-serif;
+}
+
+.poetry-section > h2 {
+    font-family:
+        "Vazirmatn",
+        sans-serif;
+}
+
+.poem {
+    width:
+        min(650px, 100%);
+
+    font-size:
+        clamp(25px, 3vw, 43px);
+
+    line-height: 2;
+}
+
+.poem-note {
+    font-size: 17px;
+
+    opacity: 0.6;
+}
+
+.read-more {
+    margin-top: 50px;
+
+    border:
+        1px solid var(--black);
+
+    background: none;
+
+    padding:
+        14px 25px;
+
+    cursor: pointer;
+
+    font-family:
+        "Vazirmatn",
+        sans-serif;
+}
+
+
+/* =========================================================
+   PODCAST
+   ========================================================= */
+
+.podcast-section {
+    text-align: center;
+
+    background: #252422;
+
+    color: var(--cream);
+}
+
+.podcast-symbol {
+    width: 250px;
+    height: 250px;
+
+    border:
+        1px solid #777;
+
+    border-radius: 50%;
+
+    margin: auto;
+
+    display: grid;
+
+    place-items: center;
+}
+
+.podcast-symbol div {
+    width: 80px;
+    height: 80px;
+
+    background: var(--red);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0 0 0 25px #111,
+        0 0 0 26px #888;
+}
+
+.coming-soon {
+    margin-top: 50px;
+
+    letter-spacing: 0.4em;
+
+    font-size: 12px;
+}
+
+
+/* =========================================================
+   ARCHIVE
+   ========================================================= */
+
+.archive-links {
+    border-top:
+        1px solid #555;
+}
+
+.archive-links a {
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    color: inherit;
+
+    text-decoration: none;
+
+    padding:
+        30px 10px;
+
+    border-bottom:
+        1px solid #555;
+
+    font-size:
+        clamp(25px, 4vw, 50px);
+
+    transition:
+        padding 0.3s,
+        background 0.3s;
+}
+
+.archive-links a span {
+    font-size: 10px;
+}
+
+.archive-links a:hover {
+    padding-left: 35px;
+
+    background: var(--red);
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-section {
+    min-height: 70vh;
+}
+
+.email {
+    display: inline-block;
+
+    color: inherit;
+
+    margin-top: 60px;
+
+    font-size:
+        clamp(27px, 5vw, 70px);
+
+    text-decoration: none;
+
+    border-bottom:
+        1px solid;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    background: var(--cream);
+
+    padding:
+        30px 4vw;
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    gap: 30px;
+
+    font-size: 10px;
+
+    letter-spacing: 0.18em;
+}
+
+
+/* =========================================================
+   SCROLL ANIMATIONS
+   ========================================================= */
+
+.reveal {
+    opacity: 0;
+
+    transform:
+        translateY(35px);
+
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+
+    transform:
+        translateY(0);
+}
+
+
+/* =========================================================
+   PERSIAN INTERFACE
+   ========================================================= */
+
+body.persian [data-fa] {
+    direction: rtl;
+
+    font-family:
+        "Vazirmatn",
+        sans-serif;
+}
+
+body.persian .text-column,
+body.persian .section-intro {
+    direction: rtl;
+}
+
+
+/* =========================================================
+   TABLET / MOBILE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    .topbar {
+        position: absolute;
+
+        padding: 20px;
+    }
+
+    nav {
+        display: none;
+    }
+
+    .hero {
+        min-height: 850px;
+    }
+
+    .portal {
+        width: 82vw;
+
+        height: 610px;
+    }
+
+    .hero-title h1 {
+        font-size: 14vw;
+    }
+
+    .surname {
+        font-size: 8px;
+
+        letter-spacing: 0.15em;
+    }
+
+    .manifesto {
+        gap: 15px;
+
+        font-size: 9px;
+    }
+
+    .side-words {
+        display: none;
+    }
+
+    .collage-left {
+        left: -80px;
+
+        opacity: 0.65;
+    }
+
+    .collage-right {
+        right: -80px;
+
+        opacity: 0.65;
+    }
+
+    .portrait {
+        width: 150px;
+
+        height: 210px;
+    }
+
+    .portrait::before {
+        width: 90px;
+
+        height: 120px;
+
+        left: 30px;
+    }
+
+    .portrait::after {
+        width: 120px;
+
+        left: 15px;
+    }
+
+    .manuscript {
+        width: 130px;
+
+        height: 180px;
+    }
+
+    .stairs {
+        width: 90%;
+    }
+
+    .portals {
+        grid-template-columns:
+            1fr 1fr;
+
+        padding:
+            70px 5vw;
+    }
+
+    .portal-card {
+        border-bottom:
+            1px solid rgba(0, 0, 0, 0.2);
+    }
+
+    .content-section {
+        padding:
+            80px 7vw;
+    }
+
+    .teaching-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .teaching-grid article {
+        border-right: none;
+    }
+
+    .photo-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    footer {
+        flex-direction: column;
+    }
+}
+
+
+/* =========================================================
+   SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 520px) {
+
+    .portals {
+        grid-template-columns:
+            1fr;
+    }
+
+    .portal-card {
+        border-right: none;
+
+        padding-bottom: 55px;
+    }
+
+    .card-image {
+        aspect-ratio: 1;
+    }
+
+    .sun {
+        width: 280px;
+        height: 280px;
+
+        left: -80px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY — REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    html {
+        scroll-behavior: auto;
+    }
+
+    .reveal {
+        opacity: 1;
+
+        transform: none;
+
+        transition: none;
+    }
+
+    body {
+        transition: none;
+    }
+
+}
